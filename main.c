@@ -6,7 +6,7 @@
 /*   By: tkulket <tkulket@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 18:02:22 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/20 01:54:42 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/08/21 01:15:22 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(void)
 {
 	int	c;
 
-	c = 'T';
+	c = 'E';
 	printf("var = %c\n", c);
 	printf("var = %d\n", c);
 	printf("ft_isalpha = %d\n", ft_isalpha(c));

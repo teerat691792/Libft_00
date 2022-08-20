@@ -6,14 +6,14 @@
 /*   By: tkulket <tkulket@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 01:27:15 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/20 01:41:21 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/08/21 01:15:50 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
-		return (11);
+		return (1);
 	else
 		return (0);
 }
