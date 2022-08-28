@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkulket <tkulket@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 18:02:22 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/29 01:09:02 by tkulket          ###   ########.fr       */
+/*   Created: 2022/08/28 19:11:18 by tkulket           #+#    #+#             */
+/*   Updated: 2022/08/29 02:07:05 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
-#include <string.h>
-#include "libft.h"
-
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	char	*dst1;
-	char	*dst2;
-	char	src[] = "zxcvbnm";
-	int	n;
+	unsigned int	i;
 
-	n = 4;
-	printf("ft_ = %u\n",ft_strlcpy(dst1,src,n));
-	printf("ctyp = %lu\n",strlcpy(dst2,src,n));
-	
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+		i++;
+	}
 	return (0);
-
 }
