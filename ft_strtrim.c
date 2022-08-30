@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkulket <tkulket@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/20 01:03:40 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/20 01:10:34 by tkulket          ###   ########.fr       */
+/*   Created: 2022/08/30 07:14:13 by tkulket           #+#    #+#             */
+/*   Updated: 2022/08/30 07:18:44 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+char	*ft_strtrim(char const s1, char const *set)
 {
-	if (c >= '0' && c <= '9')
-		return (2048);
-	return (0);
+	
 }
