@@ -6,14 +6,14 @@
 /*   By: tkulket <tkulket@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 15:10:51 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/27 06:05:32 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/08/31 02:59:33 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isalpha(int c)
 {
 	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1024);
+		return (1);
 	else
 		return (0);
 }

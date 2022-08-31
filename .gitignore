@@ -52,6 +52,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-libft-unit-test/
+tester/*
 
 .DS_Store

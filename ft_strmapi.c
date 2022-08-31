@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 07:18:13 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/31 07:50:06 by tkulket          ###   ########.fr       */
+/*   Created: 2022/08/31 07:24:07 by tkulket           #+#    #+#             */
+/*   Updated: 2022/08/31 10:05:24 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	(void)*s1;
-	(void)*s2;
+	(void)*s;
+	(void)*f;
 	return (0);
 }

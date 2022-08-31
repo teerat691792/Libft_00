@@ -5,14 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 07:14:13 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/30 07:18:44 by tkulket          ###   ########.fr       */
+/*   Created: 2022/08/31 08:10:08 by tkulket           #+#    #+#             */
+/*   Updated: 2022/08/31 10:36:56 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	
+	(void)*s1;
+	(void)*set;
+	return (0);
 }
