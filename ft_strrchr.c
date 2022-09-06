@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 02:05:55 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/31 10:49:12 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/01 21:13:33 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	char	*tmp;
 	char	a;
-	int	i;
+	int		i;
 
 	a = (char)c;
 	tmp = (char *)s;

@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 02:46:43 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/30 03:05:46 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/05 17:32:11 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,19 @@ int	ft_atoi(const char *str)
 	{
 		n++;
 	}
-	while (str[n] == '-' || str[n] == '+')
-	{
+	if (str[n] == '-' || str[n] == '+')
+	{	
 		if (str[n] == '-')
-			minus = minus * -1;
+			minus = -1;
 		n++;
 	}
+	if (str[n] == '-' || str[n] == '+')
+		return (0);
 	x = 0;
 	while (str[n] >= '0' && str[n] <= '9')
 	{
 		x = (x * 10) + (str[n] - '0');
 		n++;
 	}
-	return (x * minus);
+	return (minus * x);
 }
