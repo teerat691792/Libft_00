@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:13:32 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/06 21:27:04 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/07 21:46:45 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,61 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*p_src;
-	unsigned char	*p_dst;
+	char *d;
+	char *s;
+	size_t t;
 
-	p_src = (unsigned char *)src;
-	p_dst = (unsigned char *)dst;
-	if (dst > src)
+	*d = (char)dst;
+	*s = (char)src;
+
+	if (len == 0 || dst == src)		/* nothing to do */
+		return (dst);
+
+
+	if ((size_t)dst < (size_t)src)
 	{
-		while (len-- > 0)
-			p_dst[len] = p_src[len];
-	}
+		/*
+		 * Copy forward.
+		 */
+		 
+/*		t = len;
+		while (--t)
+		{
+			*(int *)d = *(int *)s;
+			s += sizeof(char);
+			d += sizeof(char);
+		}
+*/		
+		t = len;
+		while (--t)
+		{
+			*d++ = *s++;
+		}
+	} 
 	else
 	{
-		while (len-- > 0 && (p_dst || p_src))
-			*(p_dst++) = *(p_src++);
-			}
+		/*
+		 * Copy backwards.  Otherwise essentially the same.
+		 * Alignment works as before, except that it takes
+		 * (t&wmask) bytes to align, not wsize-(t&wmask).
+		 */
+		s += len;
+		d += len;
+		t = len;
+	/*
+		while (--t)
+		{
+			s -= sizeof(src);
+			d -= sizeof(dst);
+			*(int *)d = *(int *)s;
+		}
+	*/
+		t = len;
+		while (--t)
+		{
+			*--d = *--s;
+		}	
+	}
 	return (dst);
 }						
 

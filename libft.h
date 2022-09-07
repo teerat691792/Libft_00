@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 19:44:04 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/06 16:44:22 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/07 22:39:19 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
+#include <limits.h>
 
 int	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
