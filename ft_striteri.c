@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:27:14 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/31 10:04:50 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/12 05:16:13 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	(void)*s;
-	(void)*f;
+	size_t	i;
+	size_t	l;
+	i = 0;
+	l = ft_strlen(s);
+	while (i < l)
+	{
+			f(i, &s[i]);
+			i++;
+		
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:31:46 by tkulket           #+#    #+#             */
-/*   Updated: 2022/08/31 10:02:19 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/11 21:39:28 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	(void)*s;
-	(void)fd;
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
