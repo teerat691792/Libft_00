@@ -6,101 +6,39 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:13:32 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/07 21:46:45 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/12 22:36:34 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	char *d;
-	char *s;
-	size_t t;
-
-	*d = (char)dst;
-	*s = (char)src;
-
-	if (len == 0 || dst == src)		/* nothing to do */
-		return (dst);
-
-
-	if ((size_t)dst < (size_t)src)
-	{
-		/*
-		 * Copy forward.
-		 */
-		 
-/*		t = len;
-		while (--t)
-		{
-			*(int *)d = *(int *)s;
-			s += sizeof(char);
-			d += sizeof(char);
-		}
-*/		
-		t = len;
-		while (--t)
-		{
-			*d++ = *s++;
-		}
-	} 
-	else
-	{
-		/*
-		 * Copy backwards.  Otherwise essentially the same.
-		 * Alignment works as before, except that it takes
-		 * (t&wmask) bytes to align, not wsize-(t&wmask).
-		 */
-		s += len;
-		d += len;
-		t = len;
-	/*
-		while (--t)
-		{
-			s -= sizeof(src);
-			d -= sizeof(dst);
-			*(int *)d = *(int *)s;
-		}
-	*/
-		t = len;
-		while (--t)
-		{
-			*--d = *--s;
-		}	
-	}
-	return (dst);
-}						
-
+#include "libft.h"
 
 int	main(void)
 {
-	char	dst1[11] = "1234567890";
-	char	dst2[11] = "1234567890";
-	int 	i;
-	int 	p;
-	int 	l;
+	char	dst1[11] = "0123456789";
+	char	dst2[11] = "0123456789";
 	char	*x, *y, *z;
+	size_t	n;
+	size_t	a;
+	size_t	b;
 
 	x = (dst1 + 0);
 	y = (dst1 + 2);
-	z = (dst1 - 6);
+	z = (dst1 - 2);
 	printf("\n");
-	printf("dst1		= %s \n",(x));
-	printf("dst1 + 2	= %s \n",(y));
-	printf("dst1 - 6	= %s \n",(z));
-//	printf("dst1++		= %s \n",(dst1++));
-//	printf("dst1--		= %s \n",(dst1--));
-	printf("~~~~~~~~~ memcpy  & memmove ~~~~~~\n\n");
-	l = 5;
-	p = 5;
-	x = memmove(dst1 + p,dst1,sizeof(char) * l);
-	y = ft_memmove(dst2 + p,dst2,sizeof(char) * l) ;
-	i = 0;
-	while (i < 15)
-	{
-		printf("[%d]	default	= %c	ft_move	= %c \n",i,dst1[i],dst2[i]);
-		i++;
-	}
+	printf("dst		= %p %s \n",&x,x);
+	printf("dst1 + 2	= %p %s \n",&y,y);
+	printf("dst1 - 6	= %p %s \n",&z,z);
+
+	printf("dst1	=%p %s\n",&dst1,dst1);
+	printf("dst2	=%p %s\n",&dst2,dst2);
+	a = 3;
+	b = 0;
+	n = 20;
+	printf("a = %zu	b = %zu n = %zu\n",a,b,n);
+	memmove(dst1 + a,dst1 + b, n);
+	printf("default	=%p %s\n",&dst1,dst1);
+	ft_memmove(dst2 + a,dst2 + b, n);
+	printf("ft____	=%p %s\n",&dst2,dst2);
+
+	return(0);
 }

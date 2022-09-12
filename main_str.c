@@ -6,13 +6,36 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 03:15:51 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/11 23:36:45 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:10:24 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+int 	main(void)
+{
+	char	s[10] = "123ABC456";
+
+	printf("str		= %s\n", s);
+	printf("str		= %p\n",&s);
+	printf("str + 3	= %s\n", (s + 3 ));
+//	printf("str3	= %p\n",&(s + 3 ));
+	s++;
+	printf("str3	= %p\n",&s);
+	printf("str - 3	= %s\n", (s - 3 ));
+	
+	return(0);
+}
+
+
+
+
+
+
+
+
+/*
 char	*ft_strnstr(const char *haystake, const char *needle, size_t len);
 
 int	main(void)
@@ -35,7 +58,7 @@ int	main(void)
 	printf("ft____	= %s \n",tmp);
 	
 
-
+*/
 
 
 /*
@@ -92,8 +115,6 @@ int	main(void)
 	//strncmp
 	//strnstr
 
-	return (0);
-}
 /*
 	if (argc == 4)
 		{
