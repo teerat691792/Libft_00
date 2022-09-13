@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:18:13 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/12 15:21:49 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/14 00:07:23 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	if (!i && !j)
-		return (malloc(1));
+	if (!s1 || !s2)
+		return (NULL);
 	tmp = malloc(sizeof(char) * (i + j + 1));
+	if (!tmp)
+		return (NULL);
 	ft_memcpy(tmp, s1, i);
 	ft_memcpy(tmp + i, s2, j);
+	tmp[i + j] = '\0';
 	return (tmp);
 }
 /*

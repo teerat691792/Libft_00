@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 04:24:08 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/12 00:39:24 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/14 00:00:25 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	s = (unsigned char *)src;
 	d = (unsigned char *)dst;
-	if (n == 0 || d == s)
+	if (d == s || n == 0)
 		return (dst);
 	if (!d && !s)
 		return (0);
 	i = 0;
 	while (i < n)
 	{
-		*(d++) = *(s++);
+		d[i] = s[i];
 		i++;
 	}
 	return (d);
