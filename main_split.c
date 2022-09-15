@@ -1,35 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   main_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/30 03:22:20 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/15 10:12:23 by tkulket          ###   ########.fr       */
+/*   Created: 2022/09/15 17:44:22 by tkulket           #+#    #+#             */
+/*   Updated: 2022/09/15 17:53:29 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	char	*dest;
-	int		j;
+char	**ft_split(char const *s, char c);
 
-	i = 0;
-	while (s1[i])
-		i++;
-	dest = (char *)malloc(sizeof(*s1) *(i + 1));
-	if (s1 == NULL)
-		return (NULL);
-	j = 0;
-	while (s1[j])
+int	main(int argc, char **argv)
+{
+	char	c;
+	char	*str = NULL;
+	char	**split = NULL;
+	int		i = 0;
+
+	if (argc == 3)
 	{
-		dest[j] = s1[j];
-		j++;
+		c = argv[2][0];
+		str = argv[1];
+		split = ft_split(str, c);
+		while (split[i])
+		{
+			printf("%s\n", split[i]);
+			i++;
+		}
+		i = 0;
+		while (split[i])
+		{
+			free(split[i]);
+			i++;
+		}
+		free(split);
 	}
-	dest[j] = '\0';
-	return (dest);
+	return (0);
 }

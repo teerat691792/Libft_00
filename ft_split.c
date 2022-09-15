@@ -6,59 +6,109 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:21:17 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/13 06:20:31 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/15 18:08:34 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-size_t	*ft_lensubstr(char const *s, char c, size_t count)
+
+char	*ft_splitsubstr(char const *s, unsigned int start, size_t len)
 {
-	size_t	*len;
-	size_t	i;
-	char	*tmp;
-	
-	tmp = (char *)s;
+	char			*tmp;
+	unsigned int	i;
+
+	if (start > (size_t)ft_strlen(s))
+		return (ft_calloc(1, 1));
+	if (ft_strlen(s) - start < len)
+		len = (size_t)ft_strlen(s + start);
+	tmp = malloc(sizeof(*s) * len + 1);
+	//printf("len : %zu\n", len);
 	i = 0;
-	len = (size_t *)malloc(sizeof(size_t) * count + 1);
-	while (i < count)
+	while (i < len && s[start + i])
 	{
-		printf("tmp	=%s\n",tmp);
-		printf("len tmp	=%zu\n",ft_strlen(tmp));
-		printf("len chr =%zu\n",ft_strlen(ft_strchr(tmp, c)));
-
-		len[i] = ft_strlen(tmp) - ft_strlen(ft_strchr(tmp, c));
-		printf("len[%zu]	=%zu\n",i,len[i]);
-
-		tmp = ft_strchr(tmp, c) + 1;
+		tmp[i] = s[start + i];
 		i++;
 	}
-	printf("\n");
-
-	return(len);
+	tmp[i] = '\0';
+//	if (s)
+//		free((char *)s);
+	return (tmp);
 }
-*/
+
+char	*ft_splitdup(const char *s1)
+{
+	int		i;
+	char	*dest;
+	int		j;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	dest = (char *)malloc(sizeof(*s1) *(i + 1));
+	if (s1 == NULL)
+		return (NULL);
+	j = 0;
+	while (s1[j])
+	{
+		dest[j] = s1[j];
+		j++;
+	}
+	dest[j] = '\0';
+//	printf("dup	=%s\n",dest);
+//	if (s1)
+//		free((char *)s1);
+	return (dest);
+}
 size_t	ft_countsplit(char const *s, char c)
 {
 	size_t	count;
 	size_t	i;
 
 	i = 0;
-	count =  1;
-	if(!s || !c)
+	count =  0;
+	if(!s)
 		return(count);
+//	if(!c)
+//		return(1);
 	while(s[i])
 	{
-		
-		if ((s[i] != c && s[i + 1] == c))   // incorrect
-				count++;
+		if (s[i] != c && s[i + 1] == c)
+		{
+//			printf("s[%zu]	=%c\n",i,s[i]);
+//			printf("		case A	@@\n");
+			count++;
+		}
+//		else if (s[i + 1] == '\0' && s[i] == c)
+		else if (s[i + 1] == '\0' && count == 0 && s[i] == c)
+		{
+//			printf("		case B	@@\n");
+			return (0);
+		}
+		else if (s[i + 1] == '\0' && count == 0 )
+		{	
+//			printf("		case C	@@\n");
+			count++;
+		}
+/*		else if (s[i + 1] == '\0' && count == 0 && !c)
+		{	
+			printf("		case D	@@\n");
+			count++;
+		}
+*/		else if (s[i + 1] == '\0' && s[i] != c )
+		{	
+//			printf("		case E	@@\n");
+			count++;
+		}
 		i++;
-//		if ( !s[i + 1])
-//			count--;
 	}
-	printf("sum n	=%zu\n",count);
-	printf("i	=%zu\n",i);
-	printf("\n");
+/*	 if (i != 0 && count == 0)
+		{	
+			printf("		case F	@@\n");
+			count++;
+		}
+*///	printf("i	=%zu\n",i);
+//	printf("sum n	=%zu\n",count);
+//	printf("\n");
 	return(count);
 
 }
@@ -67,42 +117,43 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tmp;
 	size_t	count;
-//	size_t	*len;
 	size_t	b;
 	size_t	i;
-
-	char	*str;
+	//char	*str;
 	
-	str = (char *)s;
+//	str = (char *)s;
 	if (!s)
-		return((char**)malloc(sizeof(char *)*1));
+		return(NULL);
 	// mallloc main **
 	count = ft_countsplit(s, c);
 	tmp = (char **)malloc(sizeof(char*) * (count + 1));
 	if (!tmp)
-		return(0);
+		return(NULL);
 	// strdup spilt
-//	len = ft_lensubstr(s, c, count);
 	i = 0;
 	while (i < count)
 	{
-		while(str[0] == c)
-			str = ft_strchr(str, c) + 1;
+		while(s[0] == c)
+			s = ft_strchr(s, c) + 1;
 			
-		printf("str	=%s\n",str);
-		printf("i	=%zu\n",i);
-		printf("count	=%zu\n",count);
+//		printf("str	=%s\n",s);
+//		printf("i	=%zu\n",i);
 
-		b = ft_strlen(str) - ft_strlen(ft_strchr(str,c));
-		printf("b	=%zu\n",b);
+		b = ft_strlen(s) - ft_strlen(ft_strchr(s, c));
+//		printf("b	=%zu\n",b);
 
-		tmp[i] = ft_strdup(ft_substr(str,0,b));
-		str = ft_strchr(str, c) + 1;
+//		str = ft_splitdup(ft_splitsubstr(s,0,b));
+		tmp[i] = ft_splitsubstr(s,0,b);
+		//tmp[i] = str;
+		s = ft_strchr(s, c) + 1;
+//		free(str);
 		i++;
 	}
-
+	tmp[i] = NULL;
+//	printf(" $$$$$$$$$$$$$$\n");
 	return(tmp);
 }
+
 /*
 int	main(void)
 {
@@ -110,19 +161,6 @@ int	main(void)
 	char	c = 'a';
 	char	**tmp;
 	size_t	i;
-
-	printf("_-test----------------------------------_\n\n");
-
-	printf("*s	=%s\n",s);
-	printf("c	=%c\n",c);
-	tmp = ft_split(s,c);
-	i = 0;
-	while(tmp[i])
-	{
-		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
-		i++;
-	}
-		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
 
 	printf("_- 1_6 ----------------------------------_\n\n");
 
@@ -139,7 +177,23 @@ int	main(void)
 	}
 		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
 
+	printf("_- 7 8 ----------------------------------_\n\n");
+
+	strcpy(s, "chinimala   *");
+	c = 0;
+	printf("*s	=%s\n",s);
+	printf("c	=%c\n",c);
+	tmp = ft_split(s,c);
+	i = 0;
+	while(tmp[i])
+	{
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+		i++;
+	}
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+
 	printf("_- 11 13 ----------------------------------_\n\n");
+
 
 	strcpy(s, "chinimala");
 	c = ' ';
@@ -154,6 +208,50 @@ int	main(void)
 	}
 		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
 
+	printf("_-  9  ----------------------------------_\n\n");
+
+	strcpy(s, "        ");
+	c = ' ';
+	printf("*s	=%s\n",s);
+	printf("c	=%c\n",c);
+	tmp = ft_split(s,c);
+	i = 0;
+	while(tmp[i])
+	{
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+		i++;
+	}
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+
+	printf("_-  14  15  ----------------------------------_\n\n");
+
+	strcpy(s, "        ");
+	c = ' ';
+	printf("*s	=%s\n",s);
+	printf("c	=%c\n",c);
+	tmp = ft_split(s,c);
+	i = 0;
+	while(tmp[i])
+	{
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+		i++;
+	}
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+
+	printf("_-test----------------------------------_\n\n");
+
+	strcpy(s, "123a1234a1345a1");
+	c = 'a';
+	printf("*s	=%s\n",s);
+	printf("c	=%c\n",c);
+	tmp = ft_split(s,c);
+	i = 0;
+	while(tmp[i])
+	{
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
+		i++;
+	}
+		printf("\n*tmp[%zu]	=%s\n",i,tmp[i]);
 
 	return(0);
 }

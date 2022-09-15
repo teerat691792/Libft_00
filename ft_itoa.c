@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:22:44 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/14 05:49:13 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/15 09:41:28 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ size_t	ft_countdigit(int n)
 	d = 0;
 	if (n == INT_MIN)
 		return (11);
+	
 	if (n < 0)
 	{
 		n *= -1;
@@ -62,12 +63,14 @@ char	*ft_itoa(int n)
 	char	*tmp;
 	size_t	d;
 
-	printf("\n");
-	printf("n	=%d\n",n);
 	d = ft_countdigit(n);
+	if (d == 0)
+		d = 1;
 	tmp = malloc(sizeof(char) * (d + 1));
+	if (!tmp)
+		return (NULL);
 	tmp = ft_insertchar(tmp, n, d);
-	printf("tmp	=%s\n",tmp);
+	tmp[d] = '\0'; 
 	return (tmp);
 }
 /*
