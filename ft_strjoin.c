@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:18:13 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/15 09:21:01 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/19 20:51:06 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	tmp[i + j] = '\0';
 	return (tmp);
 }
+
 /*
 int	main(void)
 {

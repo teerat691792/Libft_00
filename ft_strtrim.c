@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 08:10:08 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/14 00:14:35 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/19 23:49:38 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	len = bkwd - frwd + 1;
 	tmp = malloc(sizeof(char) * len + 1);
 	ft_memcpy(tmp, (s1 + frwd), len);
+	tmp[len] = '\0';
 	return (tmp);
 }

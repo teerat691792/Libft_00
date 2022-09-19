@@ -6,50 +6,40 @@
 #    By: tkulket <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 19:20:13 by tkulket           #+#    #+#              #
-#    Updated: 2022/09/07 21:52:50 by tkulket          ###   ########.fr        #
+#    Updated: 2022/09/19 03:33:45 by tkulket          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = libft.a
 
-SRCSS = 	ft_calloc.c \
-	ft_isascii.c \
-	ft_memchr.c \
-	ft_memmove.c \
-	ft_strdup.c \
-	ft_strlcpy.c \
-	ft_strnstr.c \
-	ft_tolower.c \
-	ft_atoi.c \
-	ft_isalnum.c \
-	ft_isdigit.c \
-	ft_memcmp.c \
-	ft_memset.c \
-	ft_strjoin.c \
-	ft_strlen.c \
-	ft_strrchr.c \
-	ft_toupper.c \
-	ft_bzero.c \
-	ft_isalpha.c \
-	ft_isprint.c \
-	ft_memcpy.c \
-	ft_strchr.c \
-	ft_strlcat.c \
-	ft_strncmp.c \
-	ft_substr.c 
-SRC		= memset bzero memcpy memmove memchr memcmp strlen isalpha isdigit isalnum \
-				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
-				atoi calloc strdup substr \
-				strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
+SRC		= 		memset bzero memcpy\
+				memmove memchr memcmp\
+				strlen isalpha isdigit isalnum\
+				isascii isprint toupper\
+				tolower strchr strrchr\
+				strncmp strlcpy strlcat strnstr\
+				atoi calloc strdup substr\
+				strjoin strtrim split itoa strmapi\
+				putchar_fd putstr_fd \
 				putendl_fd putnbr_fd striteri
 
+
+
 SRCA = $(addprefix ft_, $(SRC))
+SRCB = $(addsuffix .c, $(SRCA))
 
-SRCS = $(addsuffix .c, $(SRCA))
+OBJS := $(SRCB:.c=.o)
 
-#SRCSB
 
-OBJS := $(SRCS:.c=.o)
+BONUS	= 		lstnew lstadd_front lstsize lstlast\
+				lstadd_back lstdelone lstclear\
+				lstiter lstmap
+
+BNSA = $(addprefix ft_, $(BONUS))
+BNSB = $(addsuffix .c, $(BNSA))
+
+BONUS_OBJS := $(BNSB:.c=.o)
+
 all: $(NAME)
 
 .c.o:
@@ -57,8 +47,21 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
+
+bonus:$(NAME)
+
+.c.o:
+	gcc -Wall -Wextra -Werror -c $< -o $(<:.c=.o)
+
+$(NAME): $(OBJS) $(BONUS_OBJS)
+	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
+
 fclean: clean
 	rm -f $(NAME)
+
 re: fclean all
+
+.PHONY : all bonus clean fclean re

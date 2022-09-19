@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:22:44 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/15 09:41:28 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/19 23:47:21 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ size_t	ft_countdigit(int n)
 	d = 0;
 	if (n == INT_MIN)
 		return (11);
-	
 	if (n < 0)
 	{
 		n *= -1;
@@ -70,49 +69,6 @@ char	*ft_itoa(int n)
 	if (!tmp)
 		return (NULL);
 	tmp = ft_insertchar(tmp, n, d);
-	tmp[d] = '\0'; 
+	tmp[d] = '\0';
 	return (tmp);
 }
-/*
-int	main(void)
-{
-	int n;
-	char 	*s;
-	n = 0;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-	n = 1;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-	n = -1;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-
-	n = 42;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-
-	n = 12345;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-
-	n = -12345;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-
-	n = INT_MAX;
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-	n = INT_MIN;
-	printf("n	=%d\n",n);
-	s = ft_itoa(n);
-	printf("result	=%s	size	=%lu\n" ,s,sizeof(s));
-	return (0);
-
-}
-*/
