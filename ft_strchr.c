@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 01:37:17 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/19 23:32:47 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 21:34:40 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char	*ft_strchr(const char *s, int c)
 	}
 	if (!a && tmp[i] == '\0')
 	{
-		printf("1234567");
 		return ((char *)tmp + i);
 	}
 	return (0);

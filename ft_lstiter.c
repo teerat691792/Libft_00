@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 01:55:03 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/19 23:36:38 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 21:35:56 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	if (!lst)
+		return ;
 	while (lst != NULL)
 	{
 		(*f)(lst->content);

@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:30:29 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/11 19:52:18 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 19:31:37 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	n;
 
+	if (!s)
+		return ;
 	n = ft_strlen(s);
 	write (fd, s, n);
 }

@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 01:43:16 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/12 22:00:28 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 21:32:59 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t n)
 
 	j = ft_strlen(dst);
 	i = ft_strlen(src);
+	if (!dst)
+		return (0);
 	if (n <= j)
 		return (n + i);
 	k = 0;

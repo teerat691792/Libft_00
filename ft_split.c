@@ -6,22 +6,36 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:21:17 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/19 23:32:20 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 19:29:27 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+size_t	ft_len(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	return (i);
+}
 
 char	*ft_splitsubstr(char const *s, unsigned int start, size_t len)
 {
 	char			*tmp;
 	unsigned int	i;
 
-	if (start > (size_t)ft_strlen(s))
+	if (start > (size_t)ft_len(s))
 		return (ft_calloc(1, 1));
-	if (ft_strlen(s) - start < len)
-		len = (size_t)ft_strlen(s + start);
+	if (ft_len(s) - start < len)
+		len = (size_t)ft_len(s + start);
 	tmp = malloc(sizeof(*s) * len + 1);
+	if (!tmp)
+		return (NULL);
 	i = 0;
 	while (i < len && s[start + i])
 	{
@@ -74,7 +88,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[0] == c)
 			s = ft_strchr(s, c) + 1;
-		b = ft_strlen(s) - ft_strlen(ft_strchr(s, c));
+		b = ft_len(s) - ft_len(ft_strchr(s, c));
 		tmp[i] = ft_splitsubstr(s, 0, b);
 		s = ft_strchr(s, c) + 1;
 		i++;

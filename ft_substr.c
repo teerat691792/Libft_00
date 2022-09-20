@@ -6,7 +6,7 @@
 /*   By: tkulket <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 07:15:56 by tkulket           #+#    #+#             */
-/*   Updated: 2022/09/14 00:06:04 by tkulket          ###   ########.fr       */
+/*   Updated: 2022/09/20 21:37:32 by tkulket          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char			*tmp;
 	unsigned int	i;
 
+	if (!s)
+		return (NULL);
 	if (start > (size_t)ft_strlen(s))
 		return (ft_calloc(1, 1));
 	if (ft_strlen(s) - start < len)
 		len = (size_t)ft_strlen(s + start);
 	tmp = malloc(sizeof(*s) * len + 1);
+	if (!tmp)
+		return (NULL);
 	i = 0;
 	while (i < len && s[start + i])
 	{
@@ -31,20 +35,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	tmp[i] = '\0';
 	return (tmp);
 }
-/*
-int	main(void)
-{
-	char	*s1;
-	char	*s2;
-
-	s1 = strdup("0123456789");
-	printf("%s\n",s1);
-	s2 = ft_substr(s1, 9, 10);
-	printf("%s\n",s2);
-
-
-	free(s1);
-	free(s2);
-	return (0);
-}
-*/
